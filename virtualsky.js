@@ -968,7 +968,10 @@ VirtualSky.prototype.loadLanguage = function(l,fn){
 		if(this.langs[l]) lang = l;
 	}
 	l = lang;
-	if(!l) return;
+	if(!l){
+		this.loadLanguage('en', fn);
+		return this;
+	}
 	var url = this.langurl.replace('%LANG%',l);
 	this.loadJSON(
 		url,
